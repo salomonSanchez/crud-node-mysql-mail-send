@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>resultados</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  
+</head>
+  <body>
+      <div>
+            <table>
+                    <tr>
+                        <th>id</th>
+                        <th>nombre</th>
+                        <th>precio</th>
+                    </tr>
+                    <% if (Data) {%>
+                            <% for(var i=0; i<Data.length; i++) { %>
+                                <tr>
+                                    <td><%=Data[i].id%></td>
+                                    <td><%=Data[i].nombre%></td>
+                                    <td><%=Data[i].precio%></td>
+                                </tr>
+                                
+                            <%}%>
+                        <% } %>
+            </table>
+      </div>
+
+      <div>
+            <form action="/update/<%= Data.id %>" method="POST">
+                <table>
+                    <tbody>                       
+                        <tr>
+                            <td>Name:<%= Data.nombre%> </td>
+                            <td><input type="text" name="name" value="<%= Data.nombre%>"  required></td>
+                        </tr>
+                        <tr>
+                            <td>Price: <%= Data.precio%></td>
+                            <td><input type="text" name="precio"  value="<%= Data.precio%>" required/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="submit" value="Save" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+      </div>
+        
+  </body>
+</html>
